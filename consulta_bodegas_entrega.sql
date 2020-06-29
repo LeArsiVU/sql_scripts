@@ -1,4 +1,4 @@
-﻿use eCommerceMX
+use eCommerceMX
 
 -- En esta primera tabla temporal guardo los campoa que necesito
 -- y filtro para que sean solo muebles y la fecha de facturación entre 01-Enero-2018 al 31-Mayo-2020
@@ -24,6 +24,7 @@ set #tabla_1.idu_bodegacodigo = t2.bodega
 from tienda0800.mufacturadetallehistorial t2 
 where #tabla_1.sec_notafactura = t2.factura and 
  #tabla_1.fec_fechafacturacion = t2.fecha and 
+ #tabla_1.idu_articulocodigo =  t2.codigo  and
  #tabla_1.sec_ordencommerce = 0 and
  #tabla_1.idu_bodegacodigo is NULL
 
@@ -47,7 +48,7 @@ where
 
  select top 10 * from  #tabla_1 where sec_ordencommerce <> 0
 
-
+ 
  -- En esta tabla ya se hacen las agrupaciones
  select
  YEAR(t1.fec_fechafacturacion) Año,
